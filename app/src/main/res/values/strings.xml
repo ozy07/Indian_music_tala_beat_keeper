@@ -3,14 +3,9 @@
     <string name="bpm_tag">BPM:</string>
     <string name="time_sign_tag">T/S:</string>
     <string name="mettype_tag">BASIC METRONOME</string>
-    <string name="talatype_tag">CUSTOM THALAM</string>
     <string name="tap_button">TAP HERE 7 TIMES TO SET TEMPO</string>
-    <string name="thaala_sel">Select Thaala</string>
-    <string name="jathis_sel">Select Jathis</string>
-    <string name="nadais_sel">Select Nadai</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string-array name="thalam_type">
         <item>Eka - Default</item>

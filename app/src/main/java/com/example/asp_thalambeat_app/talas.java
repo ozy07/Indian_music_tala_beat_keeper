@@ -5,13 +5,22 @@ import java.util.ArrayList;
 public class talas {
     ArrayList<Integer> combinedList;
     ArrayList<Integer> laghu;
-    ArrayList<Integer> drutam;
-    ArrayList<Integer> andrutam;
+    ArrayList<Integer> drutam = new ArrayList<>();
+    ArrayList<Integer> andrutam = new ArrayList<>();
+    public  talas(){
+        drutam.add(R.drawable.palm_down_b);
+        drutam.add(R.drawable.palm_up_b);
+
+        andrutam.add(R.drawable.palm_down_b_);
+    }
+
+
     int [] laghu_gestures = new int [] {
             R.drawable.palm_down_b, R.drawable.pinky_b, R.drawable.ring_b,
             R.drawable.middle_b,  R.drawable.index_b, R.drawable.thumb_b,
             R.drawable.pinky_6th_b_, R.drawable.ring_7th_b_, R.drawable.middle_8th_b_
     };
+
 
     public ArrayList laghu_set (int n){
         laghu = new ArrayList<>();
@@ -20,21 +29,60 @@ public class talas {
         }
         return laghu;
     }
-    public ArrayList drutam_set(){
-        drutam = new ArrayList<>();
-        drutam.add(R.drawable.palm_down_b);
-        drutam.add(R.drawable.palm_up_b);
-        return drutam;
-    }
-    public ArrayList andrutam_set(){
-        andrutam = new ArrayList<>();
-        andrutam.add(R.drawable.palm_down_b_);
-        return andrutam;
-    }
 
     //Talas
     //Eka
-    public void eka_list(int ts){ //made up of laghu (I)
+    public ArrayList eka_list(int ts){ //made up of laghu (I)
+        combinedList = new ArrayList<>();
         combinedList = laghu_set(ts);
+        return combinedList;
     }
+    public ArrayList ata_List(int ts){ //made up of two laghus and two drutam (IIOO)
+        combinedList = new ArrayList<>();
+        ArrayList<Integer> lg = laghu_set(ts);
+        combinedList.addAll(lg);
+        combinedList.addAll(lg);
+        combinedList.addAll(drutam);
+        combinedList.addAll(drutam);
+        return combinedList;
+    }
+    public ArrayList dhruva_list(int ts){ //made up of one laghu followed by a drutam and two laghu(IOII)
+        combinedList = new ArrayList<>();
+        ArrayList<Integer> lg = laghu_set(ts);
+        combinedList.addAll(lg);
+        combinedList.addAll(drutam);
+        combinedList.addAll(lg);
+        combinedList.addAll(lg);
+        return combinedList;
+    }
+    public ArrayList triputa_list(int ts){ //made up of one laghu and two drutams (IOO)
+        combinedList = new ArrayList<>();
+        combinedList.addAll(laghu_set(ts));
+        combinedList.addAll(drutam);
+        combinedList.addAll(drutam);
+        return combinedList;
+    }
+    public ArrayList jhampa_list(int ts){ //made up of one laghu and one andrutam and one drutams (IUO)
+        combinedList = new ArrayList<>();
+        combinedList.addAll(laghu_set(ts));
+        combinedList.addAll(andrutam);
+        combinedList.addAll(drutam);
+        return combinedList;
+    }
+    public ArrayList roopaka_list(int ts){ //made up of one drutam and one laghu (OI)
+        combinedList = new ArrayList<>();
+        combinedList.addAll(drutam);
+        combinedList.addAll(laghu_set(ts));
+        return combinedList;
+    }
+    public ArrayList matya_list(int ts){ //made up of one laghu, one drutam and one laghu (IOI)
+        combinedList = new ArrayList<>();
+        ArrayList<Integer> lg = laghu_set(ts);
+        combinedList.addAll(lg);
+        combinedList.addAll(drutam);
+        combinedList.addAll(lg);
+        return combinedList;
+    }
+
+
 }

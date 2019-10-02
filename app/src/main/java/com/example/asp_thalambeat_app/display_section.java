@@ -117,7 +117,7 @@ public class display_section extends Fragment {
         }
         playClicked = play;
         loadSound(myTalaList.size());
-        tsText.setText(Integer.toString(myTalaList.get(myTalaList.size() - 1)));
+// ********        tsText.setText(Integer.toString(myTalaList.get(myTalaList.size() - 1)));
         StartBeat(mySoundlist, myTalaList);
     }
 
