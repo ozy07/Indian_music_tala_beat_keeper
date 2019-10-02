@@ -1,0 +1,40 @@
+<resources>
+    <string name="app_name">THALAM BEATS</string>
+    <string name="bpm_tag">BPM:</string>
+    <string name="time_sign_tag">T/S:</string>
+    <string name="mettype_tag">BASIC METRONOME</string>
+    <string name="talatype_tag">CUSTOM THALAM</string>
+    <string name="tap_button">TAP HERE 7 TIMES TO SET TEMPO</string>
+    <string name="thaala_sel">Select Thaala</string>
+    <string name="jathis_sel">Select Jathis</string>
+    <string name="nadais_sel">Select Nadai</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="thalam_type">
+        <item>Eka - Default</item>
+        <item>Dhruva</item>
+        <item>Matya</item>
+        <item>Rupaka</item>
+        <item>Jampa</item>
+        <item>Triputa</item>
+        <item>Ata</item>
+    </string-array>
+    <string-array name="jathis_type">
+        <item>Chatusram - 4</item>
+        <item>Thisram - 3</item>
+        <item>Kandam - 5</item>
+        <item>Misram - 7</item>
+        <item>Sankeernam - 9</item>
+    </string-array>
+    <string-array name="nadai_type">
+        <item>No Nadai</item>
+        <item>Chatusram Nadai</item>
+        <item>Thisram Nadai</item>
+        <item>Kandam Nadai</item>
+        <item>Misram Nadai</item>
+        <item>Sankeernam Nadai</item>
+    </string-array>
+
+</resources>

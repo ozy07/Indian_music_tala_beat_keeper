@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/player_backgrnd"
+    tools:context=".display_section">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TableLayout
+            android:id="@+id/topRowDisplay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:stretchColumns="*">
+
+            <TableRow>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:text="@string/bpm_tag"
+                    android:textColor="@color/colorwhite"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    android:typeface="serif" />
+
+                <TextView
+                    android:id="@+id/bpm_display"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="DEF"
+                    android:textColor="@color/colorLightGold"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    android:typeface="serif" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:text="@string/time_sign_tag"
+                    android:textColor="@color/colorwhite"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    android:typeface="serif" />
+
+                <TextView
+                    android:id="@+id/ts_display"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="DEF"
+                    android:textColor="@color/colorLightGold"
+                    android:textSize="30sp"
+
+                    android:textStyle="bold"
+                    android:typeface="serif" />
+            </TableRow>
+
+        </TableLayout>
+
+
+        <LinearLayout
+            android:id="@+id/bottomRowDisplay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/topRowDisplay"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="10dp"
+                    android:stretchColumns="*">
+                    <TableRow android:background="@drawable/square_textview_bgr"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/soundtv"
+                            android:gravity="center"
+                            android:text="SOUND ON"
+                            android:textColor="@color/colorGrey" />
+
+                        <TextView
+                            android:id="@+id/visualtv"
+                            android:gravity="center"
+                            android:text="VISUAL AID"
+                            android:textColor="@color/colorGrey" />
+
+                        <TextView
+                            android:id="@+id/alltv"
+                            android:gravity="center"
+                            android:text="ALL"
+                            android:textColor="@color/colorGrey" />
+                    </TableRow>
+
+                </TableLayout>
+
+
+                <TextView
+                    android:id="@+id/met_display"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/big_textview_bgr"
+                    android:padding="10dp"
+                    android:text="@string/mettype_tag"
+                    android:textColor="@color/colorGold"
+                    android:textSize="25sp"
+                    android:typeface="serif" />
+            </LinearLayout>
+
+
+            <ImageSwitcher
+                android:id="@+id/image_switch"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/speaker" />
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+</FrameLayout>

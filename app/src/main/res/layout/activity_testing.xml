@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".testing">
+
+    <Button
+        android:id="@+id/tempoBTN"
+        android:layout_below="@+id/tempoET"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="Play Tempo"
+        android:onClick="StartBeat"/>
+
+
+    <EditText
+        android:id="@+id/tempoET"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number" />
+
+    <TextView
+        android:id="@+id/beatCount"
+        android:textSize="80sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/tempoET"
+        android:layout_centerInParent="true"
+        android:text="GO" />
+
+    <Button
+        android:id="@+id/stopbutton"
+        android:layout_below="@id/tempoBTN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="STOP" />
+
+    <Button
+        android:id="@+id/tapbtn"
+        android:layout_below="@+id/stopbutton"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:text="Tap Here" />
+</RelativeLayout>

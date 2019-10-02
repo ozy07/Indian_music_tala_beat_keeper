@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".settings_mode">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:orientation="vertical">
+
+        <Spinner
+            android:id="@+id/tala_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:textAlignment="center">
+
+        </Spinner>
+
+
+        <Spinner
+            android:id="@+id/spinner_two"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:textAlignment="center">
+
+        </Spinner>
+
+
+        <Spinner
+            android:id="@+id/spinner_three"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:textAlignment="center">
+
+        </Spinner>
+
+        <Switch
+            android:id="@+id/sound_switch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Toggle Sound"
+            android:textAlignment="center" />
+
+
+        <Switch
+            android:id="@+id/visual_switch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Toggle Visual Aid"
+            android:textAlignment="center" />
+
+
+        <TextView
+            android:layout_marginTop="60dp"
+            android:id="@+id/debugTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Copyright @goTech 2019"
+            android:textAlignment="center" />
+
+    </LinearLayout>
+
+</FrameLayout>
