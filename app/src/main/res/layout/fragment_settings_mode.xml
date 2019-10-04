@@ -61,7 +61,7 @@
             android:id="@+id/debugTV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Copyright @goTech 2019"
+            android:text="© 2019 goTech UCMO"
             android:textAlignment="center" />
 
     </LinearLayout>

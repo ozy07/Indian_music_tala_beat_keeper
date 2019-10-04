@@ -77,6 +77,8 @@ public class settings_mode extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 tala_selection = parent.getSelectedItem().toString();
+                tala_listener.DashSet(tala_selection, jathi_selection, nadai_selection);
+
             }
 
             @Override
@@ -88,8 +90,7 @@ public class settings_mode extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 jathi_selection = parent.getSelectedItem().toString();
-               // Toast.makeText(getContext(), tala_selection +" "+jathi_selection,
-               //         Toast.LENGTH_SHORT).show();
+                tala_listener.DashSet(tala_selection, jathi_selection, nadai_selection);
                 switch(jathi_selection){
                     case "Thisram - 3":
                         int thisram = 3;
