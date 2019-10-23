@@ -24,7 +24,7 @@ import java.util.ArrayList;
 public class display_section extends Fragment {
 
     private TextView bpmText, tsText, metroText, soundtv, alltv, visualtv;
-    private int currentBpm;
+    private int currentBpm, sub_division;
     private Handler myhandler = new Handler();
     private SoundPool mSoundPool;
     private int[] talaSoundList;
@@ -32,10 +32,14 @@ public class display_section extends Fragment {
     private ArrayList<Integer> myTalaList, mySoundlist;
     private boolean playClicked, stopClicked, isPlaying, soundON, visualON;
     private String thalam_text, jathi_text, nadai_text, beatType_text;
+   // display_section_listener display_listener;
 
     public display_section() {
         // Required empty public constructor
     }
+    /*public interface display_section_listener{
+        void loaded_sounds(int[] sound_ids);
+    }*/
 
 
     @Override
@@ -73,9 +77,11 @@ public class display_section extends Fragment {
 
         talaSoundList[0] = mSoundPool.load(getContext(), R.raw.click, 1);
         talaSoundList[1] = mSoundPool.load(getContext(), R.raw.wood, 1);
-        talaSoundList[2] = mSoundPool.load(getContext(), R.raw.ding, 1);
-        talaSoundList[3] = mSoundPool.load(getContext(), R.raw.beep, 1);
+        talaSoundList[2] = mSoundPool.load(getContext(), R.raw.metronome_s, 1);
+        talaSoundList[3] = mSoundPool.load(getContext(), R.raw.cross_sticks, 1);
 
+       // display_listener.loaded_sounds(talaSoundList); //send sound IDs to settings mode
+        //tsText.setText(Integer.toString(talaSoundList[3]));
 
         playClicked = false;
         stopClicked = false;
@@ -84,20 +90,14 @@ public class display_section extends Fragment {
         return rootView;
     }
 
-    public void loadSound(int arSize) {
-        mySoundlist = new ArrayList<>();
-        mySoundlist.add(talaSoundList[0]);
-        for (int i = 1; i < arSize; i++) {
-            mySoundlist.add(talaSoundList[1]);
-        }
-    }
 
 
     public void updateBPM(int bPm) {
         currentBpm = bPm;
         bpmText.setText(String.valueOf(currentBpm));
-
-
+    }
+    public void updateSubDiv (int sub){
+        sub_division = sub;
     }
 
     public void playBeat(boolean play) {
@@ -116,7 +116,7 @@ public class display_section extends Fragment {
             alltv.setTextColor(getResources().getColor(R.color.colorGrey));
         }
         playClicked = play;
-        loadSound(myTalaList.size());
+        //loadSound(myTalaList.size());
 // ********        tsText.setText(Integer.toString(myTalaList.get(myTalaList.size() - 1)));
         StartBeat(mySoundlist, myTalaList);
     }
@@ -129,12 +129,17 @@ public class display_section extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+       /* if (context instanceof display_section.display_section_listener) {
+            display_listener = (display_section.display_section_listener) context;
+        }*/
+
 
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
+      //  display_listener = null;
     }
 
     public void StartBeat(final ArrayList<Integer> talaList, final ArrayList<Integer> gList) {
@@ -164,7 +169,7 @@ public class display_section extends Fragment {
                             }
                         });
                         try {
-                            Thread.sleep(60000 / (currentBpm + 1));
+                            Thread.sleep((60000 / (currentBpm + 1))/sub_division);
                         } catch (Exception ex) {
                             ex.printStackTrace();
                         }
@@ -181,8 +186,9 @@ public class display_section extends Fragment {
 
     }
 
-    public void setTalaType(ArrayList list) {
+    public void setTalaType(ArrayList list, ArrayList s_list) {
         myTalaList = list;
+        mySoundlist = s_list;
     }
 
     public void setSound(boolean isOn) {

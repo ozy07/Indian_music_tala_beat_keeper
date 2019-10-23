@@ -23,10 +23,10 @@ public class settings_section extends Fragment {
     private Button tempo_tap;
     private SeekBar tempo_selection;
     private int current_bPm = 20;
-    private int tapCount;
+    private int tapCount, sub_division;
     private boolean isPlaying;
     private MyBpmCalculator myBpmCalculator;
-    private ArrayList<Integer> gestureList;
+    private ArrayList<Integer> gestureList, soundList;
     play_section_listener play_listener;
 
 
@@ -35,7 +35,8 @@ public class settings_section extends Fragment {
     }
 
     public interface play_section_listener {
-        void playBeat(boolean play, ArrayList<Integer> list);
+        void playBeat(boolean play, ArrayList<Integer> list, ArrayList<Integer> s_list);
+        void nadaiSetting(int subdiv);
 
         void stopBeat(boolean stop);
 
@@ -113,7 +114,8 @@ public class settings_section extends Fragment {
             public void onClick(View v) {
                 play_listener.selected_bpm(current_bPm);
                 if (!isPlaying){
-                play_listener.playBeat(true, gestureList);
+                play_listener.playBeat(true, gestureList, soundList);
+                play_listener.nadaiSetting(sub_division);
                 play_listener.stopBeat(false);
                 isPlaying = true;
                 } else {
@@ -134,8 +136,12 @@ public class settings_section extends Fragment {
         return rootView;
     }
 
-    public void recieveArray(ArrayList<Integer> list){
+    public void recieveArray(ArrayList<Integer> list, ArrayList<Integer> s_list){
         gestureList = list;
+        soundList = s_list;
+    }
+    public void updateNadai(int subdiv){
+        sub_division = subdiv;
     }
 
     @Override

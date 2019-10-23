@@ -4,17 +4,17 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements settings_section.play_section_listener,
-        settings_mode.tala_settings_listener {
-    private display_section disp_sec;
+        settings_mode.tala_settings_listener{
+    private display_section disp_sec; //reference to the top player fragment
     private settings_section set_sec;
     private settings_mode set_mode;
     private ImageButton settings_nav;
     private boolean clicked_once;
+
 
     @Override
     protected void onPause() {
@@ -53,6 +53,15 @@ public class MainActivity extends AppCompatActivity implements settings_section.
 
     }
 
+    @Override
+    public void nadaiSetting(int subdiv) {
+        disp_sec.updateSubDiv(subdiv);
+    }
+
+    @Override
+    public void setNadai(int subdiv) {
+        set_sec.updateNadai(subdiv);
+    }
 
     @Override
     public void stopBeat(boolean stop) {
@@ -85,14 +94,14 @@ public class MainActivity extends AppCompatActivity implements settings_section.
     }
 
     @Override
-    public void playList(ArrayList list) {
+    public void playList(ArrayList list, ArrayList s_list) {
 
-        set_sec.recieveArray(list);
+        set_sec.recieveArray(list, s_list);
     }
 
     @Override
-    public void playBeat(boolean play, ArrayList<Integer> list) {
-        disp_sec.setTalaType(list);
+    public void playBeat(boolean play, ArrayList<Integer> list, ArrayList<Integer> s_list) {
+        disp_sec.setTalaType(list, s_list);
         disp_sec.playBeat(play);
     }
 }

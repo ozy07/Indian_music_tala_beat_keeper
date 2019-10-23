@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class talas {
     ArrayList<Integer> combinedList;
+    ArrayList<Integer> soundList;
     ArrayList<Integer> laghu;
     ArrayList<Integer> drutam = new ArrayList<>();
     ArrayList<Integer> andrutam = new ArrayList<>();
@@ -14,7 +15,7 @@ public class talas {
         andrutam.add(R.drawable.palm_down_b_);
     }
 
-
+    int subdiv = R.drawable.sub_div;
     int [] laghu_gestures = new int [] {
             R.drawable.palm_down_b, R.drawable.pinky_b, R.drawable.ring_b,
             R.drawable.middle_b,  R.drawable.index_b, R.drawable.thumb_b,
@@ -83,6 +84,37 @@ public class talas {
         combinedList.addAll(lg);
         return combinedList;
     }
+
+    public ArrayList jathi_gesture_list (ArrayList<Integer> combo, int ts){
+        combinedList = new ArrayList<>();
+        for (int x : combo) {
+            combinedList.add(x);
+            for(int i = 0; i < ts - 1; i++){
+                combinedList.add(subdiv);
+            }
+        }
+        return  combinedList;
+    }
+    public ArrayList jathi_sound_list (ArrayList<Integer> combo, int ts){
+        soundList = new ArrayList<>();
+        for (int x : combo) {
+            soundList.add(x);
+            for(int i = 0; i < ts - 1; i++){
+                soundList.add(4);
+            }
+        }
+        return  soundList;
+    }
+
+    public ArrayList soundList (int glist_size){
+        soundList = new ArrayList<>();
+        soundList.add(1);
+        for(int i = 0; i < glist_size - 1; i++){
+            soundList.add(2);
+        }
+        return soundList;
+    }
+
 
 
 }

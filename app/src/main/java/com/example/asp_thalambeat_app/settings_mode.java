@@ -24,7 +24,8 @@ public class settings_mode extends Fragment {
     private TextView debugTV;
     private talas myTala;
     String tala_selection, jathi_selection, nadai_selection;
-    ArrayList<Integer> gestureList;
+    ArrayList<Integer> gestureList, sound_list, talalist, talasoundlist;
+    private int[] soundIDs;
     tala_settings_listener tala_listener;
 
     public interface tala_settings_listener {
@@ -32,11 +33,15 @@ public class settings_mode extends Fragment {
         void visualSet(boolean isOn);
         void DashSet (String thala, String jathis, String nadai);
         void typeSet (String type);
-        void playList (ArrayList list);
+        void playList (ArrayList list, ArrayList s_list);
+        void setNadai (int subdiv);
     }
 
     public settings_mode() {
         // Required empty public constructor
+    }
+    public void rec_sounds(int [] in_sounds){
+        soundIDs = in_sounds;
     }
 
     @Override
@@ -50,6 +55,7 @@ public class settings_mode extends Fragment {
         // Inflate the layout for this fragment
         final View rootView = inflater.inflate(R.layout.fragment_settings_mode, container, false);
         myTala = new talas();
+
         sound_switch = rootView.findViewById(R.id.sound_switch);
         vis_switch = rootView.findViewById(R.id.visual_switch);
         talaspiner = rootView.findViewById(R.id.tala_spinner);
@@ -96,31 +102,38 @@ public class settings_mode extends Fragment {
                         int thisram = 3;
                         if (tala_selection.equals("Eka - Default")){
                             gestureList = myTala.laghu_set(thisram);
-                            tala_listener.playList(gestureList);
+                            sound_list = myTala.soundList(gestureList.size());
+                            tala_listener.playList(gestureList, sound_list);
                             }
                         else if (tala_selection.equals("Dhruva")){
                             gestureList = myTala.dhruva_list(thisram);
-                            tala_listener.playList(gestureList);
+                            sound_list = myTala.soundList(gestureList.size());
+                            tala_listener.playList(gestureList, sound_list);
                         }
                         else if (tala_selection.equals("Matya")){
                             gestureList = myTala.matya_list(thisram);
-                            tala_listener.playList(gestureList);
+                            sound_list = myTala.soundList(gestureList.size());
+                            tala_listener.playList(gestureList, sound_list);
                         }
                         else if (tala_selection.equals("Rupaka")){
                             gestureList = myTala.roopaka_list(thisram);
-                            tala_listener.playList(gestureList);
+                            sound_list = myTala.soundList(gestureList.size());
+                            tala_listener.playList(gestureList, sound_list);
                         }
                         else if (tala_selection.equals("Jampa")){
                             gestureList = myTala.jhampa_list(thisram);
-                            tala_listener.playList(gestureList);
+                            sound_list = myTala.soundList(gestureList.size());
+                            tala_listener.playList(gestureList, sound_list);
                         }
                         else if (tala_selection.equals("Triputa")){
                             gestureList = myTala.triputa_list(thisram);
-                            tala_listener.playList(gestureList);
+                            sound_list = myTala.soundList(gestureList.size());
+                            tala_listener.playList(gestureList, sound_list);
                         }
                         else if (tala_selection.equals("Ata")){
                             gestureList = myTala.ata_List(thisram);
-                            tala_listener.playList(gestureList);
+                            sound_list = myTala.soundList(gestureList.size());
+                            tala_listener.playList(gestureList, sound_list);
                         }
                         break;
 
@@ -128,131 +141,157 @@ public class settings_mode extends Fragment {
                         int cha = 4;
                         if (tala_selection.equals("Eka - Default")){
                             gestureList = myTala.laghu_set(cha);
-                            tala_listener.playList(gestureList);
+                            sound_list = myTala.soundList(gestureList.size());
+                            tala_listener.playList(gestureList, sound_list);
                         }
                         else if (tala_selection.equals("Dhruva")){
                             gestureList = myTala.dhruva_list(cha);
-                            tala_listener.playList(gestureList);
+                            sound_list = myTala.soundList(gestureList.size());
+                            tala_listener.playList(gestureList, sound_list);
                         }
                         else if (tala_selection.equals("Matya")){
                             gestureList = myTala.matya_list(cha);
-                            tala_listener.playList(gestureList);
+                            sound_list = myTala.soundList(gestureList.size());
+                            tala_listener.playList(gestureList, sound_list);
                         }
                         else if (tala_selection.equals("Rupaka")){
                             gestureList = myTala.roopaka_list(cha);
-                            tala_listener.playList(gestureList);
+                            sound_list = myTala.soundList(gestureList.size());
+                            tala_listener.playList(gestureList, sound_list);
                         }
                         else if (tala_selection.equals("Jampa")){
                             gestureList = myTala.jhampa_list(cha);
-                            tala_listener.playList(gestureList);
+                            sound_list = myTala.soundList(gestureList.size());
+                            tala_listener.playList(gestureList, sound_list);
                         }
                         else if (tala_selection.equals("Triputa")){
                             gestureList = myTala.triputa_list(cha);
-                            tala_listener.playList(gestureList);
+                            sound_list = myTala.soundList(gestureList.size());
+                            tala_listener.playList(gestureList, sound_list);
                         }
                         else if (tala_selection.equals("Ata")){
                             gestureList = myTala.ata_List(cha);
-                            tala_listener.playList(gestureList);
+                            sound_list = myTala.soundList(gestureList.size());
+                            tala_listener.playList(gestureList, sound_list);
                         }
                         break;
                     case "Kandam - 5":
                         int kand = 5;
                         if (tala_selection.equals("Eka - Default")){
                             gestureList = myTala.laghu_set(kand);
-                            tala_listener.playList(gestureList);
+                            sound_list = myTala.soundList(gestureList.size());
+                            tala_listener.playList(gestureList, sound_list);
                         }
                         else if (tala_selection.equals("Dhruva")){
                             gestureList = myTala.dhruva_list(kand);
-                            tala_listener.playList(gestureList);
+                            sound_list = myTala.soundList(gestureList.size());
+                            tala_listener.playList(gestureList, sound_list);
                         }
                         else if (tala_selection.equals("Matya")){
                             gestureList = myTala.matya_list(kand);
-                            tala_listener.playList(gestureList);
+                            sound_list = myTala.soundList(gestureList.size());
+                            tala_listener.playList(gestureList, sound_list);
                         }
                         else if (tala_selection.equals("Rupaka")){
                             gestureList = myTala.roopaka_list(kand);
-                            tala_listener.playList(gestureList);
+                            sound_list = myTala.soundList(gestureList.size());
+                            tala_listener.playList(gestureList, sound_list);
                         }
                         else if (tala_selection.equals("Jampa")){
                             gestureList = myTala.jhampa_list(kand);
-                            tala_listener.playList(gestureList);
+                            sound_list = myTala.soundList(gestureList.size());
+                            tala_listener.playList(gestureList, sound_list);
                         }
                         else if (tala_selection.equals("Triputa")){
                             gestureList = myTala.triputa_list(kand);
-                            tala_listener.playList(gestureList);
+                            sound_list = myTala.soundList(gestureList.size());
+                            tala_listener.playList(gestureList, sound_list);
                         }
                         else if (tala_selection.equals("Ata")){
                             gestureList = myTala.ata_List(kand);
-                            tala_listener.playList(gestureList);
+                            sound_list = myTala.soundList(gestureList.size());
+                            tala_listener.playList(gestureList, sound_list);
                         }
                         break;
                     case "Misram - 7":
                         int mis = 7;
                         if (tala_selection.equals("Eka - Default")){
                             gestureList = myTala.laghu_set(mis);
-                            tala_listener.playList(gestureList);
+                            sound_list = myTala.soundList(gestureList.size());
+                            tala_listener.playList(gestureList, sound_list);
                         }
                         else if (tala_selection.equals("Dhruva")){
                             gestureList = myTala.dhruva_list(mis);
-                            tala_listener.playList(gestureList);
+                            sound_list = myTala.soundList(gestureList.size());
+                            tala_listener.playList(gestureList, sound_list);
                         }
                         else if (tala_selection.equals("Matya")){
                             gestureList = myTala.matya_list(mis);
-                            tala_listener.playList(gestureList);
+                            sound_list = myTala.soundList(gestureList.size());
+                            tala_listener.playList(gestureList, sound_list);
                         }
                         else if (tala_selection.equals("Rupaka")){
                             gestureList = myTala.roopaka_list(mis);
-                            tala_listener.playList(gestureList);
+                            sound_list = myTala.soundList(gestureList.size());
+                            tala_listener.playList(gestureList, sound_list);
                         }
                         else if (tala_selection.equals("Jampa")){
                             gestureList = myTala.jhampa_list(mis);
-                            tala_listener.playList(gestureList);
+                            sound_list = myTala.soundList(gestureList.size());
+                            tala_listener.playList(gestureList, sound_list);
                         }
                         else if (tala_selection.equals("Triputa")){
                             gestureList = myTala.triputa_list(mis);
-                            tala_listener.playList(gestureList);
+                            sound_list = myTala.soundList(gestureList.size());
+                            tala_listener.playList(gestureList, sound_list);
                         }
                         else if (tala_selection.equals("Ata")){
                             gestureList = myTala.ata_List(mis);
-                            tala_listener.playList(gestureList);
+                            sound_list = myTala.soundList(gestureList.size());
+                            tala_listener.playList(gestureList, sound_list);
                         }
                         break;
                     case "Sankeernam - 9":
                         int san = 9;
                         if (tala_selection.equals("Eka - Default")){
                             gestureList = myTala.laghu_set(san);
-                            tala_listener.playList(gestureList);
+                            sound_list = myTala.soundList(gestureList.size());
+                            tala_listener.playList(gestureList, sound_list);
                         }
                         else if (tala_selection.equals("Dhruva")){
                             gestureList = myTala.dhruva_list(san);
-                            tala_listener.playList(gestureList);
+                            sound_list = myTala.soundList(gestureList.size());
+                            tala_listener.playList(gestureList, sound_list);
                         }
                         else if (tala_selection.equals("Matya")){
                             gestureList = myTala.matya_list(san);
-                            tala_listener.playList(gestureList);
+                            sound_list = myTala.soundList(gestureList.size());
+                            tala_listener.playList(gestureList, sound_list);
                         }
                         else if (tala_selection.equals("Rupaka")){
                             gestureList = myTala.roopaka_list(san);
-                            tala_listener.playList(gestureList);
+                            sound_list = myTala.soundList(gestureList.size());
+                            tala_listener.playList(gestureList, sound_list);
                         }
                         else if (tala_selection.equals("Jampa")){
                             gestureList = myTala.jhampa_list(san);
-                            tala_listener.playList(gestureList);
+                            sound_list = myTala.soundList(gestureList.size());
+                            tala_listener.playList(gestureList, sound_list);
                         }
                         else if (tala_selection.equals("Triputa")){
                             gestureList = myTala.triputa_list(san);
-                            tala_listener.playList(gestureList);
+                            sound_list = myTala.soundList(gestureList.size());
+                            tala_listener.playList(gestureList, sound_list);
                         }
                         else if (tala_selection.equals("Ata")){
                             gestureList = myTala.ata_List(san);
-                            tala_listener.playList(gestureList);
+                            sound_list = myTala.soundList(gestureList.size());
+                            tala_listener.playList(gestureList, sound_list);
                         }
                         break;
                     default:
                         break;
                 }
-
-
             }
 
             @Override
@@ -267,6 +306,46 @@ public class settings_mode extends Fragment {
                // debugTV.setText(jathi_selection + " " + tala_selection +" "+ nadai_selection);
                 tala_listener.DashSet(tala_selection, jathi_selection, nadai_selection);
                 tala_listener.typeSet("theTS");
+               // debugTV.setText(Integer.toString(soundIDs[3]));
+                switch (nadai_selection){
+                    case "No Nadai":
+                        tala_listener.playList(gestureList, sound_list);
+                        tala_listener.setNadai(1);
+                        break;
+                    case "Chatusram Nadai":
+                        talalist = myTala.jathi_gesture_list(gestureList,4);
+                        talasoundlist = myTala.jathi_sound_list(sound_list,4);
+                        tala_listener.playList(talalist,talasoundlist);
+                        tala_listener.setNadai(4);
+                        break;
+                    case "Thisram Nadai":
+                        talalist = myTala.jathi_gesture_list(gestureList,3);
+                        talasoundlist = myTala.jathi_sound_list(sound_list,3);
+                        tala_listener.playList(talalist,talasoundlist);
+                        tala_listener.setNadai(3);
+                        break;
+                    case "Kandam Nadai":
+                        talalist = myTala.jathi_gesture_list(gestureList,5);
+                        talasoundlist = myTala.jathi_sound_list(sound_list,5);
+                        tala_listener.playList(talalist,talasoundlist);
+                        tala_listener.setNadai(5);
+                        break;
+                    case "Misram Nadai":
+                        talalist = myTala.jathi_gesture_list(gestureList,7);
+                        talasoundlist = myTala.jathi_sound_list(sound_list,7);
+                        tala_listener.playList(talalist,talasoundlist);
+                        tala_listener.setNadai(7);
+                        break;
+                    case "Sankeernam Nadai":
+                        talalist = myTala.jathi_gesture_list(gestureList,9);
+                        talasoundlist = myTala.jathi_sound_list(sound_list,9);
+                        tala_listener.playList(talalist,talasoundlist);
+                        tala_listener.setNadai(9);
+                        break;
+                    default:
+                        break;
+                }
+
             }
 
             @Override
@@ -291,6 +370,7 @@ public class settings_mode extends Fragment {
 
         return rootView;
     }
+
 
 
     @Override
