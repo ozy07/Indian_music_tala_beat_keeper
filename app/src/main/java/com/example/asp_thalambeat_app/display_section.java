@@ -144,9 +144,11 @@ public class display_section extends Fragment {
 
     public void StartBeat(final ArrayList<Integer> talaList, final ArrayList<Integer> gList) {
         //final int tempoNum = currentBpm;
+
         final Runnable beatrun = new Runnable() {
             @Override
             public void run() {
+                isPlaying = true;
                 for (int a = 1; a > 0; a++) {
                     //int time_sign = talaList.size();
                     for (int i = 0; i < gList.size(); i++) {
@@ -170,9 +172,11 @@ public class display_section extends Fragment {
                         });
                         try {
                             Thread.sleep((60000 / (currentBpm + 1))/sub_division);
-                        } catch (Exception ex) {
+                        } catch (InterruptedException ex) {
                             ex.printStackTrace();
+
                         }
+
                         if (stopClicked) break;
                     }
                     if (stopClicked) break;
@@ -180,7 +184,9 @@ public class display_section extends Fragment {
 
             }
         };
-        new Thread(beatrun).start();
+
+        Thread playing = new Thread(beatrun);
+        playing.start();
         stopClicked = false;
 
 

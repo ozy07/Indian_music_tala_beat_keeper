@@ -16,7 +16,9 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-
+/*
+This class controls the play & Stop Buttons, The BPM slider and the BPM Tap to Set feature
+*/
 public class settings_section extends Fragment {
     private ImageButton play_beat, stop_beat;
     private TextView tempoDisplay;
@@ -24,7 +26,7 @@ public class settings_section extends Fragment {
     private SeekBar tempo_selection;
     private int current_bPm = 20;
     private int tapCount, sub_division;
-    private boolean isPlaying;
+    private boolean isPlaying = false;
     private MyBpmCalculator myBpmCalculator;
     private ArrayList<Integer> gestureList, soundList;
     play_section_listener play_listener;
@@ -34,12 +36,13 @@ public class settings_section extends Fragment {
         // Required empty public constructor
     }
 
+    /*Below is the interface declaration, detailing methods that must be implemented by any class
+    * that needs to recieve any of the variables in these methods */
+
     public interface play_section_listener {
         void playBeat(boolean play, ArrayList<Integer> list, ArrayList<Integer> s_list);
         void nadaiSetting(int subdiv);
-
         void stopBeat(boolean stop);
-
         void selected_bpm(int bpm);
     }
 
@@ -62,7 +65,6 @@ public class settings_section extends Fragment {
         myBpmCalculator = new MyBpmCalculator();
         tapCount = 0;
         tempoDisplay.setText(String.valueOf(current_bPm));
-        isPlaying = false;
 
         tempo_tap.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -120,7 +122,14 @@ public class settings_section extends Fragment {
                 isPlaying = true;
                 } else {
                     play_listener.stopBeat(true);
-                    isPlaying = false;
+                    try{Thread.sleep(1000);}
+                    catch (InterruptedException ex){
+                        ex.printStackTrace();
+                    }
+                    play_listener.playBeat(true, gestureList, soundList);
+                    play_listener.nadaiSetting(sub_division);
+                    play_listener.stopBeat(false);
+                    isPlaying = true;
                 }
 
             }

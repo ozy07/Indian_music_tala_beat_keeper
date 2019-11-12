@@ -15,6 +15,7 @@ public class talas {
         andrutam.add(R.drawable.palm_down_b_);
     }
 
+    /*The following int[] and int variables store the integer ID of the visual aids*/
     int subdiv = R.drawable.sub_div;
     int [] laghu_gestures = new int [] {
             R.drawable.palm_down_b, R.drawable.pinky_b, R.drawable.ring_b,
@@ -31,8 +32,9 @@ public class talas {
         return laghu;
     }
 
-    //Talas
-    //Eka
+    //The method Lists below mirror the structure of each tala type
+    //Changes go this portion of the code will alter structure of the tala
+
     public ArrayList eka_list(int ts){ //made up of laghu (I)
         combinedList = new ArrayList<>();
         combinedList = laghu_set(ts);
@@ -85,6 +87,15 @@ public class talas {
         return combinedList;
     }
 
+
+
+
+    /*The below methods, accepts existing arraylists and modifies them to
+    reflect the SUBDIVISION of beats
+     NOTE: Once the display fragment is created, soundpool sounds are loaded with sound IDs 1-4
+     in the order it was loaded. Therefore failure to load the sounds in the display fragment will
+     cause problems when trying to play sounds that are referenced in the methods below*/
+
     public ArrayList jathi_gesture_list (ArrayList<Integer> combo, int ts){
         combinedList = new ArrayList<>();
         for (int x : combo) {
@@ -105,7 +116,6 @@ public class talas {
         }
         return  soundList;
     }
-
     public ArrayList soundList (int glist_size){
         soundList = new ArrayList<>();
         soundList.add(1);

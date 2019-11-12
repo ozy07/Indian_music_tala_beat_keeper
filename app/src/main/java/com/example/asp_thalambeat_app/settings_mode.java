@@ -84,7 +84,6 @@ public class settings_mode extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 tala_selection = parent.getSelectedItem().toString();
                 tala_listener.DashSet(tala_selection, jathi_selection, nadai_selection);
-
             }
 
             @Override
@@ -353,7 +352,6 @@ public class settings_mode extends Fragment {
 
             }
         });
-
         vis_switch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {

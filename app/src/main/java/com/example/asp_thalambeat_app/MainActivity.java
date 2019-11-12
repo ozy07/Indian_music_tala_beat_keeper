@@ -9,10 +9,13 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements settings_section.play_section_listener,
         settings_mode.tala_settings_listener{
-    private display_section disp_sec; //reference to the top player fragment
-    private settings_section set_sec;
-    private settings_mode set_mode;
-    private ImageButton settings_nav;
+    /*This activity is the CONTAINER that holds all major fragments (Player fragment, Settings
+    and Display). Also navigation to other fragments are in this activity
+    */
+    private display_section disp_sec; //reference to the top display player fragment
+    private settings_section set_sec; //Play, Stop and BPM settings fragment
+    private settings_mode set_mode; //Tala settings fragment
+    private ImageButton settings_nav; //Navigation button
     private boolean clicked_once;
 
 
@@ -21,6 +24,9 @@ public class MainActivity extends AppCompatActivity implements settings_section.
         super.onPause();
     }
 
+    /*Below Code executes Once, as soon as this activity is created.
+    * This onCreate method runs before the 'onCreate' methods of fragments contained in this
+    * activity*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,11 +37,11 @@ public class MainActivity extends AppCompatActivity implements settings_section.
         settings_nav = findViewById(R.id.nav_button);
         clicked_once = false;
         getSupportFragmentManager().beginTransaction().replace(R.id.displayframe, disp_sec)
-                .replace(R.id.settingsframe, set_mode).commit();
+                .replace(R.id.settingsframe, set_mode).commit(); //Default display once app is first opened
 
         settings_nav.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v) { //navigation between both settings fragments
                 if (!clicked_once) {
                     getSupportFragmentManager().beginTransaction().
                             replace(R.id.settingsframe, set_sec).commit();
@@ -52,6 +58,23 @@ public class MainActivity extends AppCompatActivity implements settings_section.
 
 
     }
+
+    /*
+    * The Below methods Implement interfaces created by the different fragments and are used to send
+    * data between each fragment.
+    *
+    * ***DATA FLOW STRUCTURE***
+    * Text data to update text in player display
+    * SETTINGS MODE -----> DISPLAY SECTION
+    *
+    * Tala Sound and Visual Aid Data
+    * SETTINGS MODE ----> SETTINGS SECTION ----> DISPLAY SECTION
+    * This is to ensure that critical setting changes in settings mode do not affect the player
+    * in real time.
+    *
+    * BPM and Play/Stop Flags data
+    * SETTINGS SECTION ---> DISPLAY SECTION
+    * */
 
     @Override
     public void nadaiSetting(int subdiv) {
