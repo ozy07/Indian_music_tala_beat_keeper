@@ -1,5 +1,6 @@
 package com.example.asp_thalambeat_app;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -15,7 +16,7 @@ public class MainActivity extends AppCompatActivity implements settings_section.
     private display_section disp_sec; //reference to the top display player fragment
     private settings_section set_sec; //Play, Stop and BPM settings fragment
     private settings_mode set_mode; //Tala settings fragment
-    private ImageButton settings_nav; //Navigation button
+    private ImageButton settings_nav, help_button; //Navigation button
     private boolean clicked_once;
 
 
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements settings_section.
         set_sec = new settings_section();
         set_mode = new settings_mode();
         settings_nav = findViewById(R.id.nav_button);
+        help_button = findViewById(R.id.helpbutton);
         clicked_once = false;
         getSupportFragmentManager().beginTransaction().replace(R.id.displayframe, disp_sec)
                 .replace(R.id.settingsframe, set_mode).commit(); //Default display once app is first opened
@@ -55,7 +57,13 @@ public class MainActivity extends AppCompatActivity implements settings_section.
                 }
             }
         });
-
+        help_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                disp_sec.stopBeat(true);
+                startActivity( new Intent(MainActivity.this, help_about.class));
+            }
+        });
 
     }
 

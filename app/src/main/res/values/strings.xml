@@ -3,7 +3,16 @@
     <string name="bpm_tag">BPM:</string>
     <string name="time_sign_tag">T/S:</string>
     <string name="mettype_tag">BASIC METRONOME</string>
+    <string name="how_to">HOW TO?</string>
     <string name="tap_button">TAP HERE 7 TIMES TO SET TEMPO</string>
+    <string name="aboutUs">This application has been developed by Gift Ozonuwe, a graduate student
+        of the University of Central Missouri. The contents and intellectual property of this application belongs
+        to the above mentioned developer and the University of Central Missouri as the facilitator. \n
+        This application has been engineered to satisfy the grading requirements for Advanced System Project(CS-5690)
+        under the supervision of Dr. Narasimha Paravastu. \n
+        Developer Github Link: https://github.com/ozy07 (check out this source code and other projects) \n
+        Developer Email: giftozonuwe@gmail.com
+    </string>
 
     <!-- TODO: Remove or change this placeholder text -->
 

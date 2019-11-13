@@ -26,14 +26,14 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:src="@drawable/play_btn"
-                android:background="@color/colorwhite"
+                android:background="@drawable/button_effects"
                 android:layout_margin="10dp"/>
             <ImageButton
                 android:id="@+id/stop_button_main"
                 android:layout_margin="10dp"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:background="@color/colorwhite"
+                android:background="@drawable/button_effects"
                 android:src="@drawable/pause_btn"/>
         </LinearLayout>
 
@@ -70,7 +70,7 @@
                 android:id="@+id/tempo_tap"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/colorwhite"
+                android:background="@drawable/tap_effects"
                 android:text="@string/tap_button"
                 />
         </LinearLayout>
