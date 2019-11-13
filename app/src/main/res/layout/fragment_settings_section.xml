@@ -60,7 +60,6 @@
             android:textSize="20sp" />
 
         <LinearLayout
-            android:id="@+id/bottomRowSet"
             android:layout_below="@+id/bpm_display_main"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
