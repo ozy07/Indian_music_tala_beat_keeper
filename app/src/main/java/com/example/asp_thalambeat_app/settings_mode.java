@@ -96,9 +96,12 @@ public class settings_mode extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 jathi_selection = parent.getSelectedItem().toString();
                 tala_listener.DashSet(tala_selection, jathi_selection, nadai_selection);
+
                 switch(jathi_selection){
                     case "Thisram - 3":
                         int thisram = 3;
+                        String type = thisram + "/4";
+                        tala_listener.typeSet(type);
                         if (tala_selection.equals("Eka - Default")){
                             gestureList = myTala.laghu_set(thisram);
                             sound_list = myTala.soundList(gestureList.size());
@@ -138,6 +141,8 @@ public class settings_mode extends Fragment {
 
                     case "Chatusram - 4":
                         int cha = 4;
+                        String ctype = cha + "/4";
+                        tala_listener.typeSet(ctype);
                         if (tala_selection.equals("Eka - Default")){
                             gestureList = myTala.laghu_set(cha);
                             sound_list = myTala.soundList(gestureList.size());
@@ -176,6 +181,8 @@ public class settings_mode extends Fragment {
                         break;
                     case "Kandam - 5":
                         int kand = 5;
+                        String ktype = kand + "/4";
+                        tala_listener.typeSet(ktype);
                         if (tala_selection.equals("Eka - Default")){
                             gestureList = myTala.laghu_set(kand);
                             sound_list = myTala.soundList(gestureList.size());
@@ -214,6 +221,8 @@ public class settings_mode extends Fragment {
                         break;
                     case "Misram - 7":
                         int mis = 7;
+                        String mtype = mis + "/4";
+                        tala_listener.typeSet(mtype);
                         if (tala_selection.equals("Eka - Default")){
                             gestureList = myTala.laghu_set(mis);
                             sound_list = myTala.soundList(gestureList.size());
@@ -252,6 +261,8 @@ public class settings_mode extends Fragment {
                         break;
                     case "Sankeernam - 9":
                         int san = 9;
+                        String stype = san + "/4";
+                        tala_listener.typeSet(stype);
                         if (tala_selection.equals("Eka - Default")){
                             gestureList = myTala.laghu_set(san);
                             sound_list = myTala.soundList(gestureList.size());
@@ -304,7 +315,7 @@ public class settings_mode extends Fragment {
                 nadai_selection = parent.getSelectedItem().toString();
                // debugTV.setText(jathi_selection + " " + tala_selection +" "+ nadai_selection);
                 tala_listener.DashSet(tala_selection, jathi_selection, nadai_selection);
-                tala_listener.typeSet("theTS");
+                tala_listener.typeSet("4/4");
                // debugTV.setText(Integer.toString(soundIDs[3]));
                 switch (nadai_selection){
                     case "No Nadai":

@@ -122,7 +122,7 @@ public class settings_section extends Fragment {
                 isPlaying = true;
                 } else {
                     play_listener.stopBeat(true);
-                    try{Thread.sleep(1000);}
+                    try{Thread.sleep(500);}
                     catch (InterruptedException ex){
                         ex.printStackTrace();
                     }

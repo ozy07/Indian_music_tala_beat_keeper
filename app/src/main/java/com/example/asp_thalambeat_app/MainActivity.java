@@ -121,7 +121,7 @@ public class MainActivity extends AppCompatActivity implements settings_section.
 
     @Override
     public void typeSet(String type) {
-        //disp_sec.setBeatType(type);
+        disp_sec.setBeatType(type);
     }
 
     @Override

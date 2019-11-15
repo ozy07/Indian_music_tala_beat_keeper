@@ -10,12 +10,14 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Vibrator;
 import android.support.v4.app.Fragment;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
 import java.util.ArrayList;
@@ -32,14 +34,11 @@ public class display_section extends Fragment {
     private ArrayList<Integer> myTalaList, mySoundlist;
     private boolean playClicked, stopClicked, isPlaying, soundON, visualON;
     private String thalam_text, jathi_text, nadai_text, beatType_text;
-   // display_section_listener display_listener;
 
     public display_section() {
         // Required empty public constructor
     }
-    /*public interface display_section_listener{
-        void loaded_sounds(int[] sound_ids);
-    }*/
+
 
 
     @Override
@@ -80,9 +79,6 @@ public class display_section extends Fragment {
         talaSoundList[2] = mSoundPool.load(getContext(), R.raw.metronome_s, 1);
         talaSoundList[3] = mSoundPool.load(getContext(), R.raw.cross_sticks, 1);
 
-       // display_listener.loaded_sounds(talaSoundList); //send sound IDs to settings mode
-        //tsText.setText(Integer.toString(talaSoundList[3]));
-
         playClicked = false;
         stopClicked = false;
         isPlaying = false;
@@ -101,24 +97,16 @@ public class display_section extends Fragment {
     }
 
     public void playBeat(boolean play) {
-        if (soundON && visualON) {
-            alltv.setTextColor(getResources().getColor(R.color.colorGold));
-            soundtv.setTextColor(getResources().getColor(R.color.colorGrey));
-            visualtv.setTextColor(getResources().getColor(R.color.colorGrey));
-        } else if (soundON) {
-            soundtv.setTextColor(getResources().getColor(R.color.colorGold));
-            visualtv.setTextColor(getResources().getColor(R.color.colorGrey));
-            alltv.setTextColor(getResources().getColor(R.color.colorGrey));
-            imswitch.setImageResource(R.drawable.blank);
-        } else if (visualON) {
-            visualtv.setTextColor(getResources().getColor(R.color.colorGold));
-            soundtv.setTextColor(getResources().getColor(R.color.colorGrey));
-            alltv.setTextColor(getResources().getColor(R.color.colorGrey));
+        if(!soundON && !visualON){
+            Toast t = Toast.makeText(this.getContext(), "Check Sound and Visual Setting!",
+                    Toast.LENGTH_LONG);
+            t.setGravity(Gravity.CENTER_HORIZONTAL, 0, 0);
+            t.show();
+        } else {
+            playClicked = play;
+            StartBeat(mySoundlist, myTalaList);
         }
-        playClicked = play;
-        //loadSound(myTalaList.size());
-// ********        tsText.setText(Integer.toString(myTalaList.get(myTalaList.size() - 1)));
-        StartBeat(mySoundlist, myTalaList);
+
     }
 
     public void stopBeat(boolean stop) {
@@ -129,10 +117,6 @@ public class display_section extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-       /* if (context instanceof display_section.display_section_listener) {
-            display_listener = (display_section.display_section_listener) context;
-        }*/
-
 
     }
 
@@ -143,7 +127,6 @@ public class display_section extends Fragment {
     }
 
     public void StartBeat(final ArrayList<Integer> talaList, final ArrayList<Integer> gList) {
-        //final int tempoNum = currentBpm;
 
         final Runnable beatrun = new Runnable() {
             @Override
@@ -161,9 +144,18 @@ public class display_section extends Fragment {
                                             1, 0, 0, 1);
 
                                     imswitch.setImageResource(gList.get(b));
+                                    alltv.setTextColor(getResources().getColor(R.color.colorGold));
+                                    soundtv.setTextColor(getResources().getColor(R.color.colorGrey));
+                                    visualtv.setTextColor(getResources().getColor(R.color.colorGrey));
                                 } else if (!soundON && visualON) {
                                     imswitch.setImageResource(gList.get(b));
+                                    visualtv.setTextColor(getResources().getColor(R.color.colorGold));
+                                    soundtv.setTextColor(getResources().getColor(R.color.colorGrey));
+                                    alltv.setTextColor(getResources().getColor(R.color.colorGrey));
                                 } else if (soundON && !visualON) {
+                                    soundtv.setTextColor(getResources().getColor(R.color.colorGold));
+                                    visualtv.setTextColor(getResources().getColor(R.color.colorGrey));
+                                    alltv.setTextColor(getResources().getColor(R.color.colorGrey));
                                     mSoundPool.play(talaList.get(b), 1,
                                             1, 0, 0, 1);
                                 }
@@ -171,7 +163,7 @@ public class display_section extends Fragment {
                             }
                         });
                         try {
-                            Thread.sleep((60000 / (currentBpm + 1))/sub_division);
+                            Thread.sleep((60000 / (currentBpm))/sub_division);
                         } catch (InterruptedException ex) {
                             ex.printStackTrace();
 
@@ -209,12 +201,12 @@ public class display_section extends Fragment {
         thalam_text = tala;
         jathi_text = jathi;
         nadai_text = nadai;
-        metroText.setText(tala + "|" + jathi + "|" + nadai);
+        metroText.setText(thalam_text + "|" + jathi_text + "|" + nadai_text);
     }
 
     public void setBeatType(String btype) {
         beatType_text = btype;
-        // tsText.setText(beatType_text);
+        tsText.setText(beatType_text);
     }
 
 
