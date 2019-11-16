@@ -16,7 +16,10 @@ public class talas {
     }
 
     /*The following int[] and int variables store the integer ID of the visual aids*/
-    int subdiv = R.drawable.sub_div;
+    int [] subdiv = new int [] {
+            R.drawable.sub2, R.drawable.sub3, R.drawable.sub4, R.drawable.sub5,
+            R.drawable.sub6, R.drawable.sub7, R.drawable.sub8, R.drawable.sub9
+    };
     int [] laghu_gestures = new int [] {
             R.drawable.palm_down_b, R.drawable.pinky_b, R.drawable.ring_b,
             R.drawable.middle_b,  R.drawable.index_b, R.drawable.thumb_b,
@@ -101,7 +104,7 @@ public class talas {
         for (int x : combo) {
             combinedList.add(x);
             for(int i = 0; i < ts - 1; i++){
-                combinedList.add(subdiv);
+                combinedList.add(subdiv[i]);
             }
         }
         return  combinedList;
